@@ -7,10 +7,10 @@ public class DataIoStreamRunner {
 
         Person tom = new Person("Tom", 34, 1.68, false);
         // запись в файл
-        writeDataToFile(tom);
+        //writeDataToFile(tom);
 
         // обратное считывание из файла
-     //   readDataFromFile();
+        readDataFromFile();
     }
 
     private static void writeDataToFile(Person tom) {
