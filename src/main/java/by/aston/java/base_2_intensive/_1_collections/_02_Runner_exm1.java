@@ -16,10 +16,19 @@ public class _02_Runner_exm1 {
         }
 
 //коллекция
+        System.out.println("=================");
         ArrayList<String> list = new ArrayList<>();
         list.add("Class");
         list.add("Aston");
         System.out.println(list);
+        list.add(0,"java");
+        list.get(1);
+        list.set(1,"nnnnnnnn");
+        list.remove(1);
+        list.remove("Aston");
+        list.isEmpty();
+        list.toString();
+
 
 
     }
