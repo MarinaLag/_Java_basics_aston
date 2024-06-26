@@ -34,6 +34,7 @@ public class TestMyArrayList {
         myArrayList.print();
 
         myArrayList.remove((Integer) 8);
+        myArrayList.remove((Integer) 55);
         myArrayList.print();
 
     }

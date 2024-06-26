@@ -18,6 +18,7 @@ public class MyArrayList<E>{
             array = (E[]) new Object[capacity];
         }
     }
+
     /**
      * Добавляет указанный элемент в конец списка
      * Увеличивает size++
@@ -26,12 +27,13 @@ public class MyArrayList<E>{
     public void add(E element) {
         if (size == capacity) {
             grow();
-            array[size] = element; // добавляем элемет  в следующий
+            array[size] = element;
             size++;
         } else {
             array[size++] = element;
         }
     }
+
     /**
      * Вставляет указанный элемент в указанную позицию в этом списке
      * Смещает элемент, находящийся в данный момент в этой позиции
@@ -45,12 +47,13 @@ public class MyArrayList<E>{
         if (size == capacity) {
             grow();
         }
-        for (int i = size; i >= index; i--) {// сдвигает вправо элементы от sizе
+        for (int i = size; i >= index; i--) {
             array[i + 1] = array[i];
         }
-        array[index] = element;  // записывает значение
+        array[index] = element;
         size++;
     }
+
     /**
      * Расширяет список
      * Во временный массив temp записывает значения фактического массива
@@ -61,17 +64,18 @@ public class MyArrayList<E>{
      */
     public boolean grow() {
         try { //нисходящее преобразование
-            E[] temp = array;// во временную переменную записываем значения фактического массива
-            array = (E[]) new Object[array.length + 5];  // создаем новый массив увеличив его размер
-            capacity = capacity + 5; // увеличит capacity
+            E[] temp = array;
+            array = (E[]) new Object[array.length + 5];
+            capacity = capacity + 5;
             // или for
-            System.arraycopy(temp, 0, array, 0, temp.length);// сколько копировать - temp.length - все элемен
+            System.arraycopy(temp, 0, array, 0, temp.length);
             return true;
         } catch (ClassCastException exception) {
             exception.printStackTrace();
         }
         return false;
     }
+
     /**
      * Возвращает элемент в указанной позиции в этом списке
      * @param: index - индекс элемента для возврата элемента в указанной позиции в этом списке
@@ -81,6 +85,7 @@ public class MyArrayList<E>{
         checkIndex(index, size);
         return array[index];
     }
+
     /**
      * Заменяет элемент в указанной позициив этом списке указанным элементом
      * @param: index - индекс элемента для замены
@@ -90,6 +95,7 @@ public class MyArrayList<E>{
         checkIndex(index, size);
         array[index] = element;
     }
+
     /**
      * Проверяет, находится ли индекс в пределах диапазона index < 0 || index >= size
      * @param: index - индекс
@@ -102,6 +108,7 @@ public class MyArrayList<E>{
             throw new ArrayIndexOutOfBoundsException("Invalid index");
         return true;
     }
+
     /**
      * Удаляет элемент в указанной позиции в этом списке
      * Смещает любые последующие элементы влево
@@ -111,12 +118,13 @@ public class MyArrayList<E>{
      */
     public E remove(int index) {
         checkIndex(index, size);
-        for (int i = index; i < size; i++) { // смещаем все  влево
+        for (int i = index; i < size; i++) {
             array[i] = array[i + 1];
         }
         size--;
         return (E) array;
     }
+
     /**
      * Удаляет первое вхождение указанного элемента из этого списка,
      * если он присутствует.
@@ -124,14 +132,14 @@ public class MyArrayList<E>{
      * @param: element - элемент, который нужно удалить из этого списка,
      */
     public void remove(E element) {
-        // проверка наличия совпадения элемента
-        int index = checkValue(element); // получит индекс
+        int index = checkValue(element);
         if (index < 0) {
             return;
         } else {
             remove(index);
         }
     }
+
     /**
      * Указывает, равен ли какой-либо другой объект этому
      * @param: element - ссылочный объект с которым сравнивается
@@ -140,12 +148,13 @@ public class MyArrayList<E>{
      */
     public int checkValue(E element) {
         for (int i = 0; i < size; i++) {
-            if (element.equals(array[i])) {
+            if (array[i].equals(element)) {
                 return i; // значение индекса
             }
         }
         return -1;
     }
+
     /**
      * Возврвщает true, если этот список не содержит элементов
      * @return: true, если этот список не содержит элементов
